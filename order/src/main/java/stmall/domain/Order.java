@@ -32,6 +32,11 @@ public class Order {
 
     private String address;
 
+    @PrePersist
+    public void onPrePersist() {
+        setStatus("ORDER PLACED");
+    }
+
     @PostPersist
     public void onPostPersist() {
         OrderPlaced orderPlaced = new OrderPlaced(this);
